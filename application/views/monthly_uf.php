@@ -139,7 +139,7 @@
                         </div>
                         <div class="modal-body">
                             <ul class="list-unstyled" id="current">
-                                <button type="button" class="btn btn-primary" id="generate">Guarda formato Excel</button
+                                <button type="button" class="btn btn-primary" id="generate">Guardar en XLS</button
                             </ul>
                         </div>
                     </div>
