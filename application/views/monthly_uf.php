@@ -130,16 +130,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="input-group">
-                                <input type="date" id="date">
+                                <input type="month" id="date">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="submit">Aceptar</button>
+                            <button type="button" class="btn btn-primary" id="submit">Mostrar</button>
                         </div>
                         <div class="modal-body">
-                            <ul class="list-unstyled" id="current">
-                                <button type="button" class="btn btn-primary" id="generate">Guardar en XLS</button
+                            <hr>
+                            <button type="button" class="btn btn-primary" id="generate">Guardar en XLS</button>
+                            <ul class="list-unstyled" id="current">                                
                             </ul>
                         </div>
                     </div>
@@ -165,7 +166,7 @@
             }
             var save_file = function(date){
                 return $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     dataType: 'json',
                     data: {date:date},
                     url: '/Dsarhoya/dsy_controller/save_file'
@@ -181,7 +182,9 @@
                     $('#submit').removeAttr('disabled');
                     $('#date').removeAttr('disabled');
                     $('#current').html('');
-                    $('#current').append('<li class="items"><span class="item col-xs-4" data-toggle="popover" data-placement="bottom"><i class="ion-calendar"></i>'+response['UFs'][0]['Fecha']+'</span><span class="date col-xs-4"></span><span class="price col-xs-4"><i class="ion-cash text-success"></i> '+response['UFs'][0]['Valor']+'UF</span></li>');
+                    for(var i in response['UFs']){
+                        $('#current').append('<li class="items"><span class="item col-xs-4" data-toggle="popover" data-placement="bottom"><i class="ion-calendar"></i> '+response['UFs'][i]['Fecha']+'</span><span class="date col-xs-4"></span><span class="price col-xs-4"><i class="ion-cash text-success"></i> '+response['UFs'][i]['Valor']+'UF</span></li>');
+                    }
                 });
             });
             
