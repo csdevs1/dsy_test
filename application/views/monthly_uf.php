@@ -139,6 +139,7 @@
                         </div>
                         <div class="modal-body">
                             <ul class="list-unstyled" id="current">
+                                <button type="button" class="btn btn-primary" id="generate">Guarda formato Excel</button
                             </ul>
                         </div>
                     </div>
@@ -162,6 +163,14 @@
                     url: '/Dsarhoya/dsy_controller/get_uf'
                 });
             }
+            var save_file = function(date){
+                return $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {date:date},
+                    url: '/Dsarhoya/dsy_controller/save_file'
+                });
+            }
             
             $('#submit').on('click', function() {
                 var date = $('#date').val();
@@ -173,6 +182,13 @@
                     $('#date').removeAttr('disabled');
                     $('#current').html('');
                     $('#current').append('<li class="items"><span class="item col-xs-4" data-toggle="popover" data-placement="bottom"><i class="ion-calendar"></i>'+response['UFs'][0]['Fecha']+'</span><span class="date col-xs-4"></span><span class="price col-xs-4"><i class="ion-cash text-success"></i> '+response['UFs'][0]['Valor']+'UF</span></li>');
+                });
+            });
+            
+            $('#generate').on('click', function() {
+                var date = $('#date').val();
+                var rs=save_file(date);
+                rs.done(function(response){
                 });
             });
         </script>
