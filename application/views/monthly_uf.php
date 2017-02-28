@@ -180,7 +180,7 @@
             });
             
             $('#generate').on('click', function() {
-                window.location='/Dsarhoya/dsy_controller/save_file';
+                window.open('/Dsarhoya/dsy_controller/save_file', '_blank');
             });
         </script>
   </body>
