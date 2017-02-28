@@ -163,16 +163,7 @@
                     data: {date:date},
                     url: '/Dsarhoya/dsy_controller/get_uf'
                 });
-            }
-            var save_file = function(date){
-                return $.ajax({
-                    type: 'GET',
-                    dataType: 'json',
-                    data: {date:date},
-                    url: '/Dsarhoya/dsy_controller/save_file'
-                });
-            }
-            
+            }            
             $('#submit').on('click', function() {
                 var date = $('#date').val();
                 var rs=get_uf(date);
@@ -189,10 +180,7 @@
             });
             
             $('#generate').on('click', function() {
-                var date = $('#date').val();
-                var rs=save_file(date);
-                rs.done(function(response){
-                });
+                window.location='/Dsarhoya/dsy_controller/save_file';
             });
         </script>
   </body>
